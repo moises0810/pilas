@@ -1,0 +1,93 @@
+import java.util.Scanner;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ */
+public class NewClass {
+    public static void main(String[] args){
+        int opt, cont=0, aux;
+        Scanner sc = new Scanner (System.in);
+        System.out.println("ingresa el tamaño de la pila A:");
+        int a = sc.nextInt();
+        System.out.println("ingresa el tamaño de la pila B:");
+        int b = sc.nextInt();
+        int [] pilaA=new int [a];
+        int [] pilaB=new int [b];
+        int [] pilaC=new int [a+b];
+        do{
+            System.out.println("1 llenar pilas A y B");
+            System.out.println("2 mostrar pilas");
+            System.out.println("3 unir pilas");
+            System.out.println("4 ordenar c");
+            System.out.println("5 vaciar pilas");
+            System.out.println("6 salir");
+            switch(opt = sc.nextInt()){
+                case 1:
+                    for(int i=0; i<a; i++){
+                        pilaA[i] = (int)(Math.random() * 100 +1); 
+                    }
+                    for(int i=0; i<b; i++){
+                        pilaB[i] = (int)(Math.random() * 100 +1); 
+                    }
+                    break;
+                case 2:
+                    for(int i=0; i<a; i++){
+                        System.out.println("el valor de A es: "+pilaA[i]);
+                    }
+                    for(int i=0; i<b; i++){
+                        System.out.println("el valor de B es: "+pilaB[i]);
+                    }
+                    if(cont == 1){
+                        for (int i=0; i<pilaC.length; i++){
+                        System.out.println("el valor de pila C es: "+pilaC[i]);
+                    }     
+                }
+                    if(cont == 2){
+                        for (int i=0; i<pilaC.length; i++){
+                        System.out.println("el valor de pila C es: "+pilaC[i]);
+                    }     
+                }
+                    break;
+                case 3:
+                    for(int i=0; i<a; i++){
+                        pilaC[i]=pilaA[i];
+                    }
+                    int x=0;
+                    for(int i=a; i<pilaC.length; i++){
+                        pilaC[i]=pilaB[x];
+                        x++;
+                    }
+                    cont=1;
+                    System.out.println("pilas A y B en C");
+                    break;
+                case 4:
+                    for(int i=0; i<pilaC.length -1;i++){
+                        for(int j=0; j<pilaC.length -1;j++){
+                            if(pilaC[j]> pilaC[j+1]){
+                                aux=pilaC[j];
+                                pilaC[j]=pilaC[(j+1)];
+                                pilaC[j+1]=aux;
+                        }
+                    }
+                }
+                    cont=2;
+                    break;
+                case 5:
+                    if(cont>0){
+                     System.out.println("datos vacios");
+                     cont--;
+                    }
+                    break;
+                case 6:
+                    System.out.println("salio de las pilas A, B, C");
+                    break;
+            }
+}while(opt !=5 );
+    }
+}
